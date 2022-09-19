@@ -1,6 +1,5 @@
 package api_tests;
 
-import api_controllers.AuthController.SignIn;
 import api_controllers.AuthController.SignUp;
 import org.testng.annotations.Test;
 

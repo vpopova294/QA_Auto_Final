@@ -1,5 +1,6 @@
 package api_controllers.JobController;
 
+import PageObjects.JobPage;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -18,7 +19,7 @@ public class JobController {
                 .post(body)
                 .url("https://freelance.lsrv.in.ua/api/job/delete/" + jobId)
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization","Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMiIsIm5hbWUiOm51bGwsImlkIjoiMjIiLCJ1c2VybmFtZSI6ImxlcmEyNiIsImxhc3RuYW1lIjpudWxsLCJpYXQiOjE2NjM1OTE1ODcsImV4cCI6MTY2MzU5NTE4N30.BBq1aGCcqgyIIGRBxsHAd9Lh3hsSN7cZqXA8ar3eCMy3UJjd8-uLBlepp5mqCzGPuu2eWzkC6YiLYqX_Z6yT8g")
+                .addHeader("Authorization",token)
                 .build();
 
         Response response = new OkHttpClient().newCall(request).execute();
@@ -40,7 +41,7 @@ public class JobController {
                     .post(body)
                     .url("https://freelance.lsrv.in.ua/api/job/create")
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization","Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMiIsIm5hbWUiOm51bGwsImlkIjoiMjIiLCJ1c2VybmFtZSI6ImxlcmEyNiIsImxhc3RuYW1lIjpudWxsLCJpYXQiOjE2NjM1OTE1ODcsImV4cCI6MTY2MzU5NTE4N30.BBq1aGCcqgyIIGRBxsHAd9Lh3hsSN7cZqXA8ar3eCMy3UJjd8-uLBlepp5mqCzGPuu2eWzkC6YiLYqX_Z6yT8g")
+                    .addHeader("Authorization", token)
                     .build();
 
             Response response = new OkHttpClient().newCall(request).execute();
@@ -49,11 +50,11 @@ public class JobController {
             String responseBody = response.body().string();
     }
 
-    public void getJobById(String id) throws IOException {
+    public void getJobById(String id,String token) throws IOException {
         Request request = new Request.Builder()
                 .get()
                 .url("https://freelance.lsrv.in.ua/api/job/22" + id)
-                .addHeader("Authorization","Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMiIsIm5hbWUiOm51bGwsImlkIjoiMjIiLCJ1c2VybmFtZSI6ImxlcmEyNiIsImxhc3RuYW1lIjpudWxsLCJpYXQiOjE2NjM1OTE1ODcsImV4cCI6MTY2MzU5NTE4N30.BBq1aGCcqgyIIGRBxsHAd9Lh3hsSN7cZqXA8ar3eCMy3UJjd8-uLBlepp5mqCzGPuu2eWzkC6YiLYqX_Z6yT8g")
+                .addHeader("Authorization", token)
                 .build();
 
         Response response = new OkHttpClient().newCall(request).execute();
@@ -61,11 +62,11 @@ public class JobController {
         System.out.println(response.body().string());
     }
 
-    public void getJobsByUser() throws IOException {
+    public void getJobsByUser(String token) throws IOException {
         Request request = new Request.Builder()
                 .get()
                 .url("https://freelance.lsrv.in.ua/api/job/user/jobs")
-                .addHeader("Authorization","Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMiIsIm5hbWUiOm51bGwsImlkIjoiMjIiLCJ1c2VybmFtZSI6ImxlcmEyNiIsImxhc3RuYW1lIjpudWxsLCJpYXQiOjE2NjM1OTE1ODcsImV4cCI6MTY2MzU5NTE4N30.BBq1aGCcqgyIIGRBxsHAd9Lh3hsSN7cZqXA8ar3eCMy3UJjd8-uLBlepp5mqCzGPuu2eWzkC6YiLYqX_Z6yT8g")
+                .addHeader("Authorization", token)
                 .build();
 
         Response response = new OkHttpClient().newCall(request).execute();
@@ -73,11 +74,11 @@ public class JobController {
         System.out.println(response.body().string());
     }
 
-    public void getAllJobs() throws IOException {
+    public void getAllJobs(String token) throws IOException {
         Request request = new Request.Builder()
                 .get()
                 .url("https://freelance.lsrv.in.ua/api/job/all")
-                .addHeader("Authorization","Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMiIsIm5hbWUiOm51bGwsImlkIjoiMjIiLCJ1c2VybmFtZSI6ImxlcmEyNiIsImxhc3RuYW1lIjpudWxsLCJpYXQiOjE2NjM1OTE1ODcsImV4cCI6MTY2MzU5NTE4N30.BBq1aGCcqgyIIGRBxsHAd9Lh3hsSN7cZqXA8ar3eCMy3UJjd8-uLBlepp5mqCzGPuu2eWzkC6YiLYqX_Z6yT8g")
+                .addHeader("Authorization",token)
                 .build();
 
         Response response = new OkHttpClient().newCall(request).execute();

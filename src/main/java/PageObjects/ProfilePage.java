@@ -3,10 +3,10 @@ package PageObjects;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ProfilePage {
 
@@ -29,9 +29,7 @@ public class ProfilePage {
     private final SelenideElement removeJobButton = $("div > mat-card > mat-card-actions > button");
 
     private final ElementsCollection myJobsCards = $$("div > mat-card");
-
-
-
+    private final SelenideElement cardTitle = $(By.cssSelector("div > mat-card-title"));
 
 
 
@@ -87,12 +85,18 @@ public class ProfilePage {
 
     public ProfilePage clickRemoveJobButton() {
         removeJobButton.click();
+        Alert alert = switchTo().alert();
+        alert.accept();
         return this;
     }
 
     public ProfilePage chooseCard() {
         myJobsCards.findBy(Condition.text("aqa"));
         return this;
+    }
+
+    public String getCardTitle() {
+        return cardTitle.getText();
     }
 
 }

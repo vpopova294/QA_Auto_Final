@@ -1,5 +1,6 @@
 package api_controllers.AuthController;
 
+import dev.failsafe.internal.util.Assert;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -10,7 +11,7 @@ import java.io.IOException;
 
 public class SignIn {
 
-        public void signIn(String username, String password) throws IOException {
+        public String signIn(String username, String password) throws IOException {
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("username", username);
@@ -31,8 +32,9 @@ public class SignIn {
 
 
             JSONObject responseJson = new JSONObject(responseBody);
-            responseJson.get("token");
+            String token = String.valueOf(responseJson.get("token"));
             //System.out.println(responseJson.get("token"));
+            return token;
 
         }
     }
